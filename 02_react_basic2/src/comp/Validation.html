@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Example</title>
+  <style>
+    .success {
+      background-color: lightgreen;
+    }
+    .failure {
+      background-color: rgb(223, 8, 8);
+    }
+  </style>
+  <script>
+    function validate() {
+      var input = document.getElementById('pwd');
+      input.className='';
+      if(input.value==='0000') {
+        input.className='success';
+      } else {
+        input.className='failure';
+      }
+      input.value='';
+      input.focus()
+    }
+  </script>
+</head>
+<body>
+  <input type="password" id="pwd"></input>
+  <button onclick="validate()">Validate</button>
+</body>
+</html>
