@@ -1,0 +1,18 @@
+/* CSS Module을 사용하면 아무거나 입력해도 고유하게 변경해줌 */
+.Box {
+  background: black;
+  color: white;
+  padding: 2rem;
+}
+
+.inverted {
+  color: black;
+  background: white;
+  border: 1px solid black;
+}
+
+/* 글로벌 CSS로 사용하려면 */
+:global .something {
+  font-weight: 800;
+  color: rgb(241, 218, 11);
+}
