@@ -1,0 +1,22 @@
+.TodoList .schBar {
+  margin-bottom: 20px;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid rgb(220, 220, 220);
+  box-sizing: border-box;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+/* 검색어 입력란에 커서가 있을 때 */
+.TodoList .schBar:focus {
+  outline: none;
+  border-bottom: 1px solid rgb(68, 91, 133);
+  
+}
+
+.TodoList .list_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
