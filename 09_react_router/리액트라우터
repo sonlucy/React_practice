@@ -1,0 +1,75 @@
+* 라우팅이란?
+  - 사용자가 요청한 주소(url/)에 따라 다른 화면을 보여주는 것
+  - 출력 되어지는 페이지를 하나의 페이지로 구성(SPA), 또는 여러 페이지 구성(MPA)
+
+* 리액트 라우터
+  - 리액트에서 라우팅 관련 라이브러리를 의미 => 컴포넌트 관련 라우팅 시스템을 설정 가능
+  - Next.js는 리액트 프로젝트 라이브러리로 라우팅 시스템을 조금더 최적화 하여 작동(리액트 라우터의 대안으로 많이 적용)
+  - npm install react-router-dom 설치 후 사용 가능
+
+* Route 를 이용해 페이지 변경해 접속하기(교재P138~)
+  - react-router-dom V6
+  - Route 컴포넌트: 사용자의 현재 경로에 따라 다른 컴포넌트를 보여주는 역할
+  - Route 컴포넌트를 사용하여 어떤 주소 규칙을 가진 경로에서 어떤 컴포넌트를 보여줄 지 정의
+ 
+* 기존 Route 컴포넌트 방식
+  // App.js
+  <div>
+    <Route path="주소 규칙" component={보여 줄 컴포넌트} />
+  </div>
+
+* 변경된 Route 컴포넌트 방식(V6)
+  // App.js
+  <Routes>
+    <Route path="주소규칙" element={<보여 줄 컴포넌트 이름 />} />
+  </Routes>
+
+* BrowserRouter 컴포넌트 사용
+  - 새로고침하지 않고도 주소를 변경
+  - 현재 주소에 관련된 정보 ➨  props로 쉽게 조회 및 사용
+  - HTML5의 History API를 사용
+   * History API: History 객체를 사용하여 브라우저의 세션 기록(현재 페이지를 불러온 탭, 프레임의 방문 기록)에 접근 및 
+                  조작하는 방법을 제공
+
+* Link(교재 p143~)
+  - <a href='/'>와 유사한 기능=> <a>는 페이지를 전환하는 과정에서 페이지를 새로 불러옴
+    => 기존 어플리케이션이 가지고 있는 정보를 모두 날려버림(SPA에서는 사용할수 없음)
+    => Route 컴포넌트에서는 <a> 태그 사용 불가
+
+  - Link 컴포넌트: 클릭하면 다른 주소로 이동시켜주는 컴포넌트
+  - 페이지를 새로 불러오지 않고 애플리케이션을 그대로 유지
+  - HTML5 History API 사용 ➨ 페이지의 주소만 변경 
+  - Link 컴포넌트 자체는 <a>태그로 이루어져 있지만 페이지 전환을 방지하는 기능이 내장
+
+  - <Link to="주소">내용</Link>
+
+* URL 파라미터(교재 p148~)와 쿼리스트링
+  - 유동적인 값을 전달해야 할 때 파라미터와 쿼리를 사용하여 값을 전달
+    * 파라미터 예시: /profile/velopert 
+    * 쿼리 예시: /about?details=true
+  - 파라미터는 특정 아아디나 이름을 사용하여 조회할 때 사용
+  - 쿼리는 사용자가 키워드를 검색하거나 필요한 옵션을 전달할 때 사용
+    * 이전버전
+      {
+        "pathname" : "/about",
+        "search" : "?detail=true",
+        "hash": ""
+      }
+    * react-router-dom에서 useLocation을 import
+    * useLocation( )을 통해 search 값을 받아와 처리 
+
+* 서브 라우트(중첩 라우트)
+  - 라우트 내부에 추가되는 라우트
+  - 컴포넌트를 만들고 그 안에 Route 컴포넌트를 렌더링
+  - v6 버전으로 업데이트되면서 render과 exact는 사라지고 element props로 대체
+    * exact  ➨ 하위 페이지가 있다면 부모 라우터에 /* 추가
+    * 부모 경로까지 적을 필요 없이 파라미터만 적는다.
+    * Routes로 감싸준다.
+
+* 리액트 라우터 부가 기능
+  - 업데이트 전: history, withRouter, Switch, NavLink
+  - v6 버전으로 업데이트 후
+    * history ➨ useNavigate
+    * withRouter ➨ 사라짐
+    * Switch ➨ Routes로 변경
+    * NavLink ➨ activeStyle, activeClassName 사라짐
