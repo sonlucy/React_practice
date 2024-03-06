@@ -1,0 +1,13 @@
+서버(백엔드)쪽은 package.json에서 bcrypt 지우고
+npm install --verbose <- 이건 머지 안해도 됨
+npm i 하고
+다시 yarn add bcypt 해서
+npm start하면 됨!!
+
+클라이언트(프론트엔드)에서는
+npm install --force 이건머지
+npm update 한 뒤에 npm i 하고 npm start
+
+아니면
+npm cache clean -force 해서 캐시 제거하고
+npm install --force 해서 강제설치(모든 버전무시)
